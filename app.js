@@ -4,18 +4,33 @@ const app = express()
 const morgan = require('morgan')
 const mysql = require('mysql2')
 
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(express.static('./public'))
+
 app.use(morgan('combined'))
+
+app.post('user_create', (req, res) => {
+    console.log("Trying to create a new user...")
+    console.log("How do we get the form data???")
+
+    const firstName = req.body.create_first_name
+    const lastName = req.body.create_last_name
+    res.end()
+})
+
+connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'hospedadosusuario',
+    insecureAuth : true
+})
 
 app.get('/user/:id', (req, res) => {
     console.log("Buscandoo usuario por Id: " + req.params.id)
-
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'ImpactoRev#01',
-        database: 'testeusuario',
-        insecureAuth : true
-    })
 
     const userId = req.params.id
     const queryString = "SELECT * FROM users WHERE id = ?"     
@@ -23,10 +38,19 @@ app.get('/user/:id', (req, res) => {
         if(err) {
             console.log("Falha na query usuario: " + err)
             res.sendStatus(500)
-            throw err
+            return
+            // throw err
         }
         console.log("Encontramos usuario com sucesso")
-        res.json(rows)
+
+        const users = rows.map((row) => {
+            return {
+                Nome: row.firstName,
+                SobreNome: row.lastName,
+            }
+        })
+
+        res.json(users)
     })
 
     // res.end()
@@ -34,14 +58,16 @@ app.get('/user/:id', (req, res) => {
 
 app.get("/", (req, res) => {
     console.log("Responding to root route")
-    res.send("Hello from ROT")
+    res.send("Ola Sr ROOT")
 })
 
-app.get("/users", (req, res) =>{
-var user1 = {firstName: "Strphen", lastName: "Curry"}
-const user2 = {firstName: "Kevin", lastName: "Durant"}
-res.json([user1, user2])
-    //res.send("Nodemon auto update when I save this file")
+app.get("/users", (req, res) => {
+
+    const queryString = "SELECT * FROM users"
+
+    connection.query(queryString, (err, rows, fields) => {
+        res.json(rows)
+    })
 })
 
 //localhost:7070
