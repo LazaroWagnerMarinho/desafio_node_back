@@ -1,8 +1,8 @@
-//Conexao com BD MySQL
+//Framework de BD MySQL
 const mysql = require('mysql2')
 
-//exportando configuracao de banco
-module.exports = function(){
+const connMySQL = function(){
+    console.log('Conexao com bd foi estabelecida!!!')
 
     //Configuracao para conectar com BD MySQL
    return  connection = mysql.createConnection({
@@ -12,20 +12,9 @@ module.exports = function(){
         database: 'hospedadosusuario',
         insecureAuth : true
     })
+}
 
-    //Verefique se houve erro de conexao
-    // connection.connect(function (error){
-    //     if(error){
-    //         console.error('error de conexao com Banco de Dados: ' + error.stack);
-    //         return;
-    //     }
-    // });
-
-    // connection.query("INSERT INTO users(nome, email, hospedagem) VALUES ('Kelly', 'kelly@kelly.com', null)", function(error, resultado){
-    //     if(error){
-    //         console.log('Erro ao cadastrar usuario!')
-    //     }else{
-    //         console.log('Usuario cadastrado com sucesso!')   
-    //     }
-    // })
+//exportando configuracao de banco quando for necessario.
+module.exports = function(){
+    return connMySQL;
 }
