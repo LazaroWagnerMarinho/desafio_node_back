@@ -7,7 +7,7 @@ module.exports = function(app){
         const connection = app.config.dbConnection();
 
         connection.query('select * from users', function (error, resultado){
-            // res.send(resultado)
+            // retorna a busca do banco para tela de HTML.
             res.render("users/users", {usuario : resultado});
         });   
     });
