@@ -1,10 +1,10 @@
 const app = require('./config/server')
 
-const rotaHome = require('./app/routes/home')(app);
+// const rotaHome = require('./app/routes/home')(app);
 
-const rotaApi = require('./app/routes/api')(app);
+// const rotaApi = require('./app/routes/api')(app);
 
-const rotaUsers = require('./app/routes/users')(app);
+// const rotaUsers = require('./app/routes/users')(app);
 
 
 //localhost:7070
