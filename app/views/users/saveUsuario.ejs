@@ -9,6 +9,16 @@
 
     <br/>
 
+    <% if(validacao) { %>
+        <ul>
+            <% for(var i = 0; i < validacao.length; i++) { %>
+                <li>
+                    <%= validacao[i].msg %>
+                </li>
+           <% } %>
+        </ul>
+    <% } %>
+
     <form action="/usuario/save" method="POST">
         <label>Nome: </label>
         <input type="text" id="nome" name="nome" placeholder="Nome do Usuario que vai se hospedar"/>
