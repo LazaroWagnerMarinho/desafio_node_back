@@ -8,9 +8,9 @@ module.exports = function(aplicacao){
 
         const userId = req.params.id
 
-        const userModel = new aplicacao.app.models.usersModel;
+        const userModel = new aplicacao.app.models.usersModel(connection);
 
-        userModel.getUserId(userId, connection, function(error, resultado){
+        userModel.getUserId(userId, function(error, resultado){
             if(error){
                 console.log('Falha na query usuario: ', error)
                 res.sendStatus(500)

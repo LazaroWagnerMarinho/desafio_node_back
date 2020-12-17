@@ -2,7 +2,6 @@
 const mysql = require('mysql2')
 
 const connMySQL = function(){
-    console.log('Conexao com bd foi estabelecida!!!')
 
     //Configuracao para conectar com BD MySQL
    return  connection = mysql.createConnection({
