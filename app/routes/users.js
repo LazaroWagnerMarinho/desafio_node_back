@@ -1,12 +1,12 @@
 
-module.exports = function(app){    
+module.exports = function(aplicacao){    
 
-    app.get('/users', function(req, res){
+    aplicacao.get('/users', function(req, res){
 
         //faz conexao com Banco de Dados quando for acessado pela rota users.
-        const connection = app.config.dbConnection();
+        const connection = aplicacao.config.dbConnection();
 
-        const usersModel = app.app.models.usersModel;
+        const usersModel = aplicacao.app.models.usersModel;
 
         usersModel.getUsers(connection, function (error, resultado){
         
