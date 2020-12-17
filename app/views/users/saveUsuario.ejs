@@ -9,7 +9,8 @@
 
     <br/>
 
-    <% if(validacao) { %>
+    <% if (validacao) { %>
+        <h3>Erros</h3>
         <ul>
             <% for(var i = 0; i < validacao.length; i++) { %>
                 <li>
@@ -21,28 +22,28 @@
 
     <form action="/usuario/save" method="POST">
         <label>Nome: </label>
-        <input type="text" id="nome" name="nome" placeholder="Nome do Usuario que vai se hospedar"/>
+        <input type="text" id="nome" name="nome" value="<%=usuario.nome%>" placeholder="Nome do Usuario que vai se hospedar"/>
         <br/>
         <label>Sobre Nome</label>
-        <input type="text" id="sobreNome" name="sobreNome" placeholder="Sobre Nome do Usuario"/>
+        <input type="text" id="sobreNome" name="sobreNome" value="<%=usuario.sobreNome%>" placeholder="Sobre Nome do Usuario"/>
         <br/>
         <label>Idade: </label>
-        <input type="text" id="idade" name="idade" placeholder="idade do Usuario"/>
+        <input type="number" id="idade" name="idade" value="<%=usuario.idade%>" placeholder="idade do Usuario"/>
         <br/>
         <label>CPF: </label>
-        <input type="text" id="cpf" name="cpf" placeholder="CPF do Usuario"/>
+        <input type="text" id="cpf" name="cpf" value="<%=usuario.cpf%>" placeholder="CPF do Usuario"/>
         <br/>
         <label>Email: </label>
-        <input type="text" id="email" name="email" placeholder="Sobre Nome do Usuario"/>
+        <input type="email" id="email" name="email" value="<%=usuario.email%>" placeholder="Sobre Nome do Usuario"/>
         <br/>
         <label>Endereco: </label>
-        <input type="text" id="endereco" name="endereco" placeholder="Endereco do Usuario"/>
+        <input type="text" id="endereco" name="endereco" value="<%=usuario.endereco%>" placeholder="Endereco do Usuario"/>
         <br/>
         <label>Contato: </label>
-        <input type="text" id="contato" name="contato" placeholder="Telefone para contato com Usuario"/>
+        <input type="phone" id="contato" name="contato" value="<%=usuario.contato%>" placeholder="Telefone para contato com Usuario"/>
         <br/>
         <label>Tipo de Suite: </label>
-        <input type="text" id="hospedagem" name="hospedagem" placeholder="Tipo de suite para Usuario"/>
+        <input type="text" id="hospedagem" name="hospedagem" value="<%=usuario.hospedagem%>" placeholder="Tipo de suite para Usuario"/>
         <br/>
         <input type="submit" value="Salvar"/>
 
