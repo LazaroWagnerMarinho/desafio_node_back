@@ -1,7 +1,7 @@
-module.exports = function(app){
+module.exports = function(aplicacao){
 
     // carrega pagina html para tela
-    app.get("/", async(req, res) => {
-        res.render("home/index");        
-    })
+    aplicacao.get("/", function(req, res) {
+       aplicacao.app.controllers.home.index(aplicacao, req, res);
+    });
 };
