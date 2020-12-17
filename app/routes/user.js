@@ -8,7 +8,7 @@ module.exports = function(aplicacao){
 
         const userId = req.params.id
 
-        const userModel = aplicacao.app.models.usersModel;
+        const userModel = new aplicacao.app.models.usersModel;
 
         userModel.getUserId(userId, connection, function(error, resultado){
             if(error){

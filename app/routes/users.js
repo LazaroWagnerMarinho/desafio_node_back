@@ -6,7 +6,7 @@ module.exports = function(aplicacao){
         //faz conexao com Banco de Dados quando for acessado pela rota users.
         const connection = aplicacao.config.dbConnection();
 
-        const usersModel = aplicacao.app.models.usersModel;
+        const usersModel = new aplicacao.app.models.usersModel;
 
         usersModel.getUsers(connection, function (error, resultado){
         

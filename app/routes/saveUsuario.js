@@ -7,7 +7,7 @@ module.exports = function(aplicacao){
         const usuario = req.body;
 
         const connection = aplicacao.config.dbConnection();
-        const usersModel = aplicacao.app.models.usersModel;
+        const usersModel = new aplicacao.app.models.usersModel;
 
         usersModel.saveUser(usuario, connection, function(error, resultado){
             res.redirect('/users');
